@@ -8,8 +8,8 @@ function Footer(props) {
         <div className="w-full lg:w-2/6 lg:mx-4 lg:pr-8">
           <h3 className="font-bold text-2xl">DentalPro</h3>
           <p className="text-gray-400">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy.
+            {" "}
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam{" "}
           </p>
 
           <form className="flex items-center mt-6">
@@ -180,7 +180,7 @@ function Footer(props) {
           </ul>
 
           <p className="text-sm text-gray-400 mt-12">
-            © 2018 ProDentists. <br className="hidden lg:block" />
+            2018 ProDentists. <br className="hidden lg:block" />
             All Rights Reserved.
           </p>
         </div>
