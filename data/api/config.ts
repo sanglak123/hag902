@@ -7,13 +7,7 @@ export const rootAxios = axios.create({
   baseURL: baseURRL + "/api",
 });
 
-type user = {
-  id: string;
-  email: string;
-  admin: boolean;
-};
-
-export const CreateAccessToken = (user: user) => {
+export const CreateAccessToken = (user: any) => {
   return jwt.sign(
     {
       id: user.id,
@@ -25,7 +19,7 @@ export const CreateAccessToken = (user: user) => {
   );
 };
 
-export const CreateRefreshToken = (user: user) => {
+export const CreateRefreshToken = (user: any) => {
   return jwt.sign(
     {
       id: user.id,
