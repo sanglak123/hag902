@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "hsc01435_user6",
+    "password": "rd55k4%N4",
+    "database": "hsc01435_test",
+    "host": "112.78.2.2",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "hsc01435_user6",
+    "password": "rd55k4%N4",
+    "database": "hsc01435_test",
+    "host": "112.78.2.2",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "hsc01435_user6",
+    "password": "rd55k4%N4",
+    "database": "hsc01435_test",
+    "host": "112.78.2.2",
+    "dialect": "mysql"
+  }
+}
