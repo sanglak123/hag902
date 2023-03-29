@@ -1,6 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import bcryptjs from "bcryptjs";
 import db from "../db/models";
+import { serialize } from "cookie";
+import { CreateAccessToken } from "../api/config";
 const DB: any = db;
 const { Users } = DB;
 export const UserAuthController = {
@@ -14,6 +16,17 @@ export const UserAuthController = {
       });
       if (userLogin) {
         if (bcryptjs.compareSync(pass, userLogin.pass)) {
+          const newAcessToken = CreateAccessToken(userLogin);
+          res.setHeader(
+            "Set-Cookie",
+            serialize("refreshToken", newAcessToken, {
+              httpOnly: true,
+              secure: true,
+              path: "/",
+              sameSite: "strict",
+              maxAge: 60 * 1000 * 60 * 24,
+            })
+          );
           return res
             .status(200)
             .json({ mess: "Login success!", User: userLogin });
