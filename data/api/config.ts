@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const baseURRL = "http://localhost:3000";
+export const baseURRL = "https://hag902.vercel.app";
 export const rootAxios = axios.create({
   baseURL: baseURRL + "/api",
 });
