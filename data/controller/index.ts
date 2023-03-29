@@ -30,7 +30,6 @@ export const UserAuthController = {
           });
 
           return res.status(200).json({
-            mess: "Login success!",
             User: userLogin,
             accessToken: newAcessToken,
           });

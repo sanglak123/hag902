@@ -1,14 +1,17 @@
 import { UserAuthApi } from "@/data/api";
+import { LoginSuccess } from "@/redux/slice/users";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 function Login() {
   const router = useRouter();
+  const dispatch = useDispatch();
   const [userName, setUserName] = useState("");
   const [pass, setPass] = useState("");
 
   const handleLogin = async () => {
-    await UserAuthApi.Login(userName, pass, router);
+    await UserAuthApi.Login(userName, pass, router, dispatch, LoginSuccess);
   };
   return (
     <div id="login" className="w-screen h-screen">

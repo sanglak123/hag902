@@ -1,8 +1,8 @@
 import axios from "axios";
 import jwt from "jsonwebtoken";
 
-export const baseURRL = "https://hag902.vercel.app";
-// export const baseURRL = "http://localhost:3000";
+// export const baseURRL = "https://hag902.vercel.app";
+export const baseURRL = "http://localhost:3000";
 export const rootAxios = axios.create({
   baseURL: baseURRL + "/api",
 });

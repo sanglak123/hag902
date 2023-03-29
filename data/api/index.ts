@@ -1,6 +1,13 @@
+import { toast } from "react-toastify";
 import { rootAxios } from "./config";
 export const UserAuthApi = {
-  Login: async (userName: string, pass: string, router: any) => {
+  Login: async (
+    userName: string,
+    pass: string,
+    router: any,
+    dispatch: any,
+    LoginSuccess: any
+  ) => {
     await rootAxios({
       method: "POST",
       url: "/login",
@@ -10,8 +17,9 @@ export const UserAuthApi = {
       },
     })
       .then((res) => {
-        console.log(res.data);
+        toast.success("Login success!");
         router.replace("/");
+        dispatch(LoginSuccess(res.data));
       })
       .catch((err) => {
         console.log(err);
