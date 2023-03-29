@@ -17,4 +17,21 @@ export const UserAuthApi = {
         console.log(err);
       });
   },
+  Register: async (userName: string, pass: string, router: any) => {
+    await rootAxios({
+      method: "POST",
+      url: "/register",
+      data: {
+        userName,
+        pass,
+      },
+    })
+      .then((res) => {
+        console.log(res.data);
+        router.replace("/login");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
 };

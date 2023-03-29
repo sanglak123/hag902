@@ -27,4 +27,32 @@ export const UserAuthController = {
       return res.status(500).json(error);
     }
   },
+  Register: async (req: NextApiRequest, res: NextApiResponse) => {
+    const { userName, pass } = req.body;
+    try {
+      const [user, create] = await Users.findOrCreate({
+        where: {
+          userName: userName,
+        },
+      });
+      if (!create) {
+        return res.status(400).json({ error: "User already exits!" });
+      } else {
+        const salt = bcryptjs.genSaltSync(10);
+        const newPass = bcryptjs.hashSync(pass, salt);
+        user.set({
+          userName: userName,
+          pass: newPass,
+        });
+        await user.save().then((newUser: any) => {
+          newUser.pass = null;
+          return res
+            .status(201)
+            .json({ mess: "Register success!", User: newUser });
+        });
+      }
+    } catch (error) {
+      return res.status(500).json(error);
+    }
+  },
 };
