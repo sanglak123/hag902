@@ -1,0 +1,28 @@
+.hearder {
+}
+.logo {
+  color: red;
+  transition: 0.5s;
+  &:hover {
+    color: gray;
+  }
+}
+.nav_link {
+  color: black;
+  transition: 0.5s;
+  &::after {
+    content: "";
+    width: 0%;
+    display: block;
+    background-color: gray;
+    height: 3px;
+    transition: 0.5s;
+  }
+  &:hover,
+  &.nav_active {
+    color: blue;
+    &::after {
+      width: 100%;
+    }
+  }
+}

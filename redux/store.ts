@@ -12,6 +12,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import DataPublic from "./slice/data";
 import UserSlice from "./slice/users";
 
 const persistConfig = {
@@ -21,8 +22,8 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  //Slice
   UserSlice: UserSlice.reducer,
+  DataPublic: DataPublic.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -36,5 +37,9 @@ export const Store = configureStore({
       },
     }),
 });
+
+export type RootState = ReturnType<typeof Store.getState>;
+// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+export type AppDispatch = typeof Store.dispatch;
 
 export let persistor = persistStore(Store);

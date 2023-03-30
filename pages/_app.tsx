@@ -1,5 +1,4 @@
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "@/styles/globals.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -10,6 +9,9 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 
 import { persistor, Store } from "../redux/store";
+
+import Footer from "@/components/footer";
+import Header from "@/components/hearder";
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={Store}>

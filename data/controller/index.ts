@@ -5,7 +5,7 @@ import db from "../db/models";
 import { CreateAccessToken, CreateRefreshToken } from "../api/config";
 
 const DB: any = db;
-const { Users } = DB;
+const { Users, Imgs } = DB;
 export const UserAuthController = {
   Login: async (req: NextApiRequest, res: NextApiResponse) => {
     const { userName, pass } = req.body;
@@ -14,6 +14,7 @@ export const UserAuthController = {
         where: {
           userName: userName,
         },
+        include: [{ model: Imgs }],
       });
       if (userLogin) {
         if (bcryptjs.compareSync(pass, userLogin.pass)) {
@@ -29,6 +30,8 @@ export const UserAuthController = {
             maxAge: 60 * 1000 * 60 * 24,
           });
 
+          userLogin.pass = null;
+          userLogin.pass2 = null;
           return res.status(200).json({
             User: userLogin,
             accessToken: newAcessToken,

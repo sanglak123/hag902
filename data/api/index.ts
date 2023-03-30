@@ -1,3 +1,5 @@
+import { AppDispatch } from "@/redux/store";
+import { EmptyObject, ThunkDispatch } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import { rootAxios } from "./config";
 export const UserAuthApi = {
@@ -5,7 +7,7 @@ export const UserAuthApi = {
     userName: string,
     pass: string,
     router: any,
-    dispatch: any,
+    dispatch: AppDispatch,
     LoginSuccess: any
   ) => {
     await rootAxios({

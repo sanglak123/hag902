@@ -1,12 +1,12 @@
 import { UserAuthApi } from "@/data/api";
+import { useAppDispatch } from "@/support/hooks";
 import { LoginSuccess } from "@/redux/slice/users";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 function Login() {
   const router = useRouter();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [userName, setUserName] = useState("");
   const [pass, setPass] = useState("");
 
